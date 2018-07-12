@@ -1,19 +1,49 @@
 <odoo>
     <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="openacademy.list">
-      <field name="name">openacademy list</field>
-      <field name="model">openacademy.openacademy</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
+    <record model="ir.ui.view" id="course_form_view">
+        <field name="name">course.form</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <form string="Course Form">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+                <notebook>
+                    <page string="Description">
+                        <field name="description"/>
+                    </page>
+                    <page string="About">
+                        This is a example
+                    </page>
+                </notebook>
+            </form>
+        </field>
     </record>
-    -->
-    <record model="ir.actions.act_window" id="course_listy_action">
+    <!--List-->
+    <record model="ir.ui.view" id="course_list_view">
+        <field name="name">course.list</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <tree string="Course Tree">
+                <field name="name" string="Name Tree"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+    <!--Search-->
+    <record model="ir.ui.view" id="course_search_view">
+        <field name="name">course.list</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <search string="Course Search">
+                <field name="name" string="Name search"/>
+                <field name="description"/>
+            </search>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="course_list_action">
       <field name="name">Courses</field>
       <field name="res_model">openacademy.course</field>
       <field name="view_mode">tree,form</field>
@@ -23,6 +53,8 @@
         </p>
       </field>
     </record>
+    <!--List-->
+
     <!-- server action to the one above -->
     <!--
     <record model="ir.actions.server" id="openacademy.action_server">
@@ -43,7 +75,7 @@
     <menuitem name="Open Academy example" id="main_openacademy_menu"/>
     <!-- menu categories -->
     <menuitem name="Open academy" id="openacademy_menu" parent="main_openacademy_menu"/>
-    <menuitem name="Courses" id="courses_menu" parent="openacademy_menu" action="course_listy_action"/>
+    <menuitem name="Courses" id="courses_menu" parent="openacademy_menu" action="course_list_action"/>
 
     <!-- actions -->
     <!--
@@ -52,5 +84,4 @@
     <menuitem name="Server to list" id="openacademy" parent="openacademy.menu_2"
               action="openacademy.action_server"/>
     -->
-
 </odoo>
