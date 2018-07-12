@@ -1,5 +1,4 @@
 <odoo>
-  <data>
     <!-- explicit list view definition -->
     <!--
     <record model="ir.ui.view" id="openacademy.list">
@@ -14,16 +13,16 @@
       </field>
     </record>
     -->
-
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="openacademy.action_window">
-      <field name="name">openacademy window</field>
-      <field name="res_model">openacademy.openacademy</field>
+    <record model="ir.actions.act_window" id="course_listy_action">
+      <field name="name">Courses</field>
+      <field name="res_model">openacademy.course</field>
       <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Create the fiist Course x
+        </p>
+      </field>
     </record>
-    -->
-
     <!-- server action to the one above -->
     <!--
     <record model="ir.actions.server" id="openacademy.action_server">
@@ -41,14 +40,11 @@
     -->
 
     <!-- Top menu item -->
-    <!--
-    <menuitem name="openacademy" id="openacademy.menu_root"/>
-    -->
+    <menuitem name="Open Academy example" id="main_openacademy_menu"/>
     <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="openacademy.menu_1" parent="openacademy.menu_root"/>
-    <menuitem name="Menu 2" id="openacademy.menu_2" parent="openacademy.menu_root"/>
-    -->
+    <menuitem name="Open academy" id="openacademy_menu" parent="main_openacademy_menu"/>
+    <menuitem name="Courses" id="courses_menu" parent="openacademy_menu" action="course_listy_action"/>
+
     <!-- actions -->
     <!--
     <menuitem name="List" id="openacademy.menu_1_list" parent="openacademy.menu_1"
@@ -56,5 +52,5 @@
     <menuitem name="Server to list" id="openacademy" parent="openacademy.menu_2"
               action="openacademy.action_server"/>
     -->
-  </data>
+
 </odoo>
