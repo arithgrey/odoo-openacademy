@@ -101,7 +101,7 @@
                         <field name="seats"/>
                         <field name="taken_seats"/>
                         <field name="instructor_id"/>
-                        <field name="course_id"/>
+
                         <field name="active"/>
                         <label for="attendee_ids"/>
                         <field name="attendee_ids" nolabel ="1"/>
