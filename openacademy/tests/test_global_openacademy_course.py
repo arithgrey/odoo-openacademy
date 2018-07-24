@@ -29,3 +29,13 @@ class GlobalTestOpenAcademyCourse(TransactionCase):
             self.create_course('test', 'test' , None)
 
 
+    def test_duplicate_course(self):
+        '''
+        Test Verifica que un curso se copie de fora correcta
+        '''
+        course = self.env.ref('openacademy.course0')
+        #import  pdb; pdb.set_trace()
+        course_id = course.copy()
+        print ('course_id', course_id)
+
+

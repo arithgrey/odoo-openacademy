@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
-from odoo import models, fields, api, exceptions
 from odoo import models, fields, api, exceptions, _
 
 
@@ -27,16 +26,20 @@ class Course(models.Model):
            "The course title must be unique"),
      ]
 
-     @api.multi
+     @api.one # api one send defaults params: cr, uid , id, context
      def copy(self, default=None):
-          default = dict(default or {})
+          print ("Estoy pasando por la funcion heredada de copy cursos")
+          #default = dict(default or {})
+
+          if default is None:
+               default = {}
 
           copied_count = self.search_count(
-               [('name', '=like', u"Copy of {}%".format(self.name))])
+               [('name', '=like', _(u"Copy of {}%").format(self.name))])
           if not copied_count:
-               new_name = u"Copy of {}".format(self.name)
+               new_name = _(u"Copy of {}").format(self.name)
           else:
-               new_name = u"Copy of {} ({})".format(self.name, copied_count)
+               new_name = _(u"Copy of {} ({})").format(self.name, copied_count)
 
           default['name'] = new_name
           return super(Course, self).copy(default)
