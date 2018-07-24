@@ -25,7 +25,8 @@ class GlobalTestOpenAcademyCourse(TransactionCase):
         '''
         Se valida que no se pueda crear un curso con el mismo nombre
         '''
-        with self.assertRaisesRegexp(IntegrityError, 'Error Integreity db UNIT TEST, no se pueden crear dos cursos con el mismo nombre'):
+        message_error= 'new row for relation "openacademy_course" violates check constraint "openacademy_course_name_description_check"'
+        with self.assertRaisesRegexp(IntegrityError, message_error):
             self.create_course('test', 'test' , None)
 
 

@@ -13,8 +13,8 @@ class Course(models.Model):
      name = fields.Char(string='Title', required=True)
      start_date = fields.Date(default = fields.Datetime.now)
      description = fields.Text()
-     responsible_id = fields.Many2one('res.users', ondelete='set null', string="Responsible", index=True ,
-                                      default = get_uid )
+     responsible_id = fields.Many2one('res.users', ondelete='set null', string="Responsible", index=True,
+                                      default=get_uid)
      session_ids = fields.One2many('openacademy.session', 'course_id', string="Sessions")
      _sql_constraints = [
           ('name_description_check',
