@@ -7,7 +7,6 @@ class GlobalTestOpenAcademyCourse(TransactionCase):
 
     def setUp(self):
         super(GlobalTestOpenAcademyCourse, self).setUp()
-        self.variable = 'Hellow World'
         self.course = self.env['openacademy.course']
 
     @mute_logger('odoo.sql_db')
@@ -21,12 +20,12 @@ class GlobalTestOpenAcademyCourse(TransactionCase):
 
     @mute_logger('odoo.sql_db')
     def test_01_same_name_course(self):
-        message_error = 'new row for relation "openacademy_course" violates check constraint ' \
-                        '"openacademy_course_name_description_check" '
+        message_error = 'new row for relation "openacademy_course" violates check constraint "openacademy_course_name_description_check"'
         with self.assertRaisesRegexp(IntegrityError, message_error):
             self.create_course('test', 'test', None)
 
     def test_duplicate_course(self):
+
         course = self.env.ref('openacademy.course0')
         course_id = course.copy()
         print ('course_id', course_id)

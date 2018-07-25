@@ -65,7 +65,7 @@ class GlobalTestOpenAcademySession(common.TransactionCase):
                                       [(6, 0, [self.attendee.id])], self.course.id)
 
         session_id = session.id
-        new_session = self.session.search([('id', '=', "{}".format(session_id))])
+        new_session = self.session.search([('id', '=', "{}".format(session_id))])   
         self.assertTrue(new_session.id == session_id)
 
     print ("************" * 10, "OK SE COMPLETA EL TEST -> test_30_create_valid_session")
