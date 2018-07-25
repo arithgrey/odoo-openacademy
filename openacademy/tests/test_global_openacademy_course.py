@@ -2,6 +2,7 @@ from psycopg2 import IntegrityError
 from odoo.tests.common import TransactionCase
 from odoo.tools import mute_logger
 
+
 class GlobalTestOpenAcademyCourse(TransactionCase):
 
     def setUp(self):
