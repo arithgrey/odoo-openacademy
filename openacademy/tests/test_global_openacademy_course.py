@@ -20,7 +20,9 @@ class GlobalTestOpenAcademyCourse(TransactionCase):
 
     @mute_logger('odoo.sql_db')
     def test_01_same_name_course(self):
-        message_error = 'new row for relation "openacademy_course" violates check constraint "openacademy_course_name_description_check"'
+
+        part_msj = 'new row for relation "openacademy_course" violates check constraint '
+        message_error = part_msj + '"openacademy_course_name_description_check"'
         with self.assertRaisesRegexp(IntegrityError, message_error):
             self.create_course('test', 'test', None)
 
