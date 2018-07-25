@@ -74,4 +74,3 @@ class GlobalTestOpenAcademySession(common.TransactionCase):
         self.assertTrue(new_session.id == session_id)
 
     print ("************" * 10, "OK SE COMPLETA EL TEST -> test_30_create_valid_session")
-
