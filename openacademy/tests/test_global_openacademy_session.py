@@ -4,13 +4,13 @@ from odoo import exceptions
 from odoo.tests import common
 from odoo.tools import mute_logger
 
+
 class GlobalTestOpenAcademySession(common.TransactionCase):
     # Global test for openacademy module,
     # Test session
 
     # Pseudo-constructor method of test setUp
     def setUp(self):
-
         # Define global variables to test methods
         super(GlobalTestOpenAcademySession, self).setUp()
         self.session = self.env['openacademy.session']
@@ -22,7 +22,7 @@ class GlobalTestOpenAcademySession(common.TransactionCase):
 
     # Create session function
     def create_session(self, session_name, session_seats,
-        session_instructor_id, session_attendee_ids, session_course_id):
+                       session_instructor_id, session_attendee_ids, session_course_id):
         session_id = self.session.create({
             'name': session_name,
             'seats': session_seats,
@@ -39,10 +39,9 @@ class GlobalTestOpenAcademySession(common.TransactionCase):
         # Python constraint for instructor as attendee
 
         with self.assertRaisesRegexp(exceptions.ValidationError, 'A session\'s instructor can\'t'
-        ' be an attendee'):
-
+                                                                 ' be an attendee'):
             self.create_session('Session Test Name', 2, self.partner.id,
-            [(6,0,[self.partner.id])], self.course.id)
+                                [(6, 0, [self.partner.id])], self.course.id)
 
         print ("************" * 10, "OK SE COMPLETA EL TEST -> test_10_instructor_is_attendee")
 
@@ -53,13 +52,11 @@ class GlobalTestOpenAcademySession(common.TransactionCase):
         # Python constraint for session without course
 
         with self.assertRaisesRegexp(IntegrityError, 'null value in column "course_id"'
-            ' violates not-null constraint'):
-
+                                                     ' violates not-null constraint'):
             self.create_session('Session Test Name', 2, self.partner.id,
-            [(6,0,[self.partner.id])], None)
+                                [(6, 0, [self.partner.id])], None)
 
-        print ("************"* 10 ,  "OK SE COMPLETA EL TEST -> test_20_session_without_course")
-
+        print ("************" * 10, "OK SE COMPLETA EL TEST -> test_20_session_without_course")
 
     @mute_logger('odoo.sql_db')
     def test_30_create_valid_session(self):
@@ -70,7 +67,8 @@ class GlobalTestOpenAcademySession(common.TransactionCase):
 
         session_id = session.id
         new_session = self.session.search([('id', '=', "{}".format(session_id))])
-        import pdb;pdb.set_trace()
+        import pdb;
+        pdb.set_trace()
         self.assertTrue(new_session.id == session_id)
 
     print ("************" * 10, "OK SE COMPLETA EL TEST -> test_30_create_valid_session")

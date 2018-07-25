@@ -16,7 +16,7 @@ addons:
       - python-yaml
 env:
   global:
-  - VERSION="10.0" TESTS="0" LINT_CHECK="0"
+  - VERSION="11.0" TESTS="0" LINT_CHECK="0"
 
   matrix:
   - LINT_CHECK="1"
@@ -35,3 +35,5 @@ script:
 
 after_success:
   - travis_after_tests_success
+
+    
