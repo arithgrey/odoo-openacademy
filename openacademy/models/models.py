@@ -20,6 +20,7 @@ class Course(models.Model):
         ('name_description_check',
          'CHECK(name != description)',
          "The title of the course should not be the description"),
+
         ('name_unique',
          'UNIQUE(name)',
          "The course title must be unique"),
