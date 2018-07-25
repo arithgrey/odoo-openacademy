@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from psycopg2 import IntegrityError
 from odoo import exceptions
 from odoo.tests import common
