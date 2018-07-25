@@ -14,7 +14,6 @@ addons:
       - python-simplejson
       - python-serial
       - python-yaml
-
 env:
   global:
   - VERSION="10.0" TESTS="0" LINT_CHECK="0"
@@ -36,4 +35,3 @@ script:
 
 after_success:
   - travis_after_tests_success
-
