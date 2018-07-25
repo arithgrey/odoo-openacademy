@@ -66,7 +66,7 @@ class GlobalTestOpenAcademySession(common.TransactionCase):
 
         session_id = session.id
         new_session = self.session.search([('id', '=', "{}".format(session_id))])
-        import pdb;
+        #import pdb;
         pdb.set_trace()
         self.assertTrue(new_session.id == session_id)
 

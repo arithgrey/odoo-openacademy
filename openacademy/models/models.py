@@ -74,7 +74,7 @@ class Session(models.Model):
     def _get_end_date(self):
         for record in self:
             if not (record.start_date and record.duration):
-                record.end_date = r.start_date
+                record.end_date = record.start_date
                 continue
             start = fields.Datetime.from_string(record.start_date)
             duration = timedelta(days=record.duration, seconds=-1)
@@ -89,7 +89,7 @@ class Session(models.Model):
             record.duration = (end_date - start_date).days + 1
 
     def _taken_seats(self):
-        for record in self.filtered(lambda r: r.seats):
+        for record in self.filtered(lambda record: record.seats):
             record.taken_seats = 1
             # record.taken_seats = 100.0 * len(record.attendee_ids) / record.taken_seats
 
@@ -112,6 +112,6 @@ class Session(models.Model):
 
     @api.constrains('instructor_id', 'attendee_ids')
     def _check_instructor_not_in_attendees(self):
-        for r in self:
-            if r.instructor_id and r.instructor_id in r.attendee_ids:
+        for record in self:
+            if record.instructor_id and record.instructor_id in record.attendee_ids:
                 raise exceptions.ValidationError("A session's instructor can't be an attendee")
